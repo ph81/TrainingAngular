@@ -8,10 +8,10 @@ import { CarouselService } from 'src/app/services/carousel.service';
 })
 export class HeroComponent implements OnInit  {
   movieNow = 0;
-carousel: CarouselService['carousel'] = [];
-constructor(private service: CarouselService, private router: Router) {
-  this.carousel = service.getCarousel();
-}
+  carousel: CarouselService['carousel'] = [];
+  constructor(private service: CarouselService, private router: Router) {
+    this.carousel = service.getCarousel();
+  }
 
 ngOnInit(): void {}
 

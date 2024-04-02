@@ -10,11 +10,9 @@ import { HeroComponent } from './components/layout/hero/hero.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { FoodComponent } from './pages/food/food.component';
-import { MovieComponent } from './pages/movie/movie.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { ErrorComponent } from './pages/error/error.component';
-import { MovieCardComponent } from './components/movie-card/movie-card.component';
-import { FoodCardComponent } from './components/food-card/food-card.component';
+
 
 @NgModule({
   declarations: [
@@ -25,11 +23,10 @@ import { FoodCardComponent } from './components/food-card/food-card.component';
     ContactComponent,
     HomeComponent,
     FoodComponent,
-    MovieComponent,
     MoviesComponent,
     ErrorComponent,
-    MovieCardComponent,
-    FoodCardComponent
+
+
   ],
   imports: [
     BrowserModule,
