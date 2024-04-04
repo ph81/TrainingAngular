@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { FoodComponent } from './pages/food/food.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { ErrorComponent } from './pages/error/error.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ErrorComponent } from './pages/error/error.component';
     FoodComponent,
     MoviesComponent,
     ErrorComponent,
+    SidebarComponent
 
 
   ],

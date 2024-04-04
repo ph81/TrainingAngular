@@ -1,2 +1,77 @@
-<p>{{movie?.title}}</p>
-<p *ngFor="let time of movie?.showings">{{time}}</p>
+<div class="container">
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li [ngbNavItem]="1">
+      <button ngbNavLink>Movie Details</button>
+      <ng-template ngbNavContent>
+        <!-- Display Movie Details -->
+        <div class="card">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img
+                src={{movie?.poster}}
+                class="img-fluid rounded-start mx-auto d-block"
+                alt={{movie?.title}}
+              />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">{{movie?.title}}</h5>
+                <p class="card-text"><strong> Runtime:</strong>{{movie?.runtime}}</p>
+                <p class="card-text"><strong> Genre:</strong>{{movie?.genre}}</p>
+                <p class="card-text"><strong> Year:</strong>{{movie?.year}}</p>
+                <p class="card-text">{{movie?.plot}}</p>
+                <p class="card-text"><strong> Director:</strong>{{movie?.director}}</p>
+                <p class="card-text"><strong> Cast:</strong>{{movie?.actors}}</p>
+                <p class="card-text"><strong> Screening times:</strong><span class="badge text-bg-primary" *ngFor="let time of movie?.showings">{{time}}</span></p>
+                <button class="btn btn-primary" (click)="goToTicketsTab()">Buy Tickets</button>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="2">
+      <button ngbNavLink>Tickets</button>
+      <ng-template ngbNavContent>
+      <!-- Display Ticket Types and Quantity -->
+      <p> <label for="screeningTime">Screening Time:</label>
+        <select id="screeningTime" [(ngModel)]="selectedScreeningTime">
+          <option *ngFor="let time of movie?.showings" [value]="time">{{ time }}</option>
+        </select></p>
+        <p>
+          <label for="ticketType">Ticket Type:</label>
+          <select id="ticketType" [(ngModel)]="ticketType" (change)="calculatePrice()">
+            <option *ngFor="let ticket of ticketPrices" [value]="ticket.type">{{ ticket.type | titlecase }}</option>
+          </select>
+        </p>
+        <!-- Ticket Price  -->
+        <p>Price: ${{ selectedTicketPrice }}</p>
+        <!-- Ticket Quantity Input -->
+        <p> 
+          <label for="ticketQuantity">Quantity:</label>
+          <input id="ticketQuantity" type="number" [(ngModel)]="ticketQuantity" min="1" required>
+        </p>
+        <p> 
+          <button (click)="addToCart()">Add to Cart</button>
+        </p>
+      </ng-template>
+    </li>
+    <li [ngbNavItem]="3">
+      <button ngbNavLink>Three</button>
+      <ng-template ngbNavContent>
+        <!-- Display Cart Items -->
+      <div *ngFor="let item of cartItems">
+        <p>{{ item.title }} - {{ item.screeningTime }} - {{ item.ticketType | titlecase }} x{{ item.quantity }} - ${{ item.ticketPrice }}</p>
+      </div>
+      <p><strong> Total:</strong>${{calculateTotal()}}</p>
+      <p> 
+        <button (click)="confirmPurchase()">Confirm purchase</button>
+      </p>
+      </ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>
+
+

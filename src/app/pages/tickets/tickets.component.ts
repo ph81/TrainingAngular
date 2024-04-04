@@ -1,23 +1,39 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CartService } from 'src/app/services/cart.service';
 import { MoviesService } from 'src/app/services/movies.service';
-import { Movie } from 'src/app/services/utils';
+import { Item, Movie } from 'src/app/services/utils';
 
 
 @Component({
   selector: 'app-tickets',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule, NgbModule, RouterModule],
   templateUrl: './tickets.component.html',
   styleUrls: ['./tickets.component.css']
 })
 export class TicketsComponent implements OnInit {
   movie: Movie | undefined;
-  movieIndex = 0;
+  selectedScreeningTime: string = '';
+  ticketType: string = 'adult';
+  ticketQuantity: number = 0;
+  ticketPrices: { type: string, price: number }[] = [
+    { type: 'adult', price: 14 },
+    { type: 'kids', price: 8 },
+    { type: 'senior', price: 10 },
+  ];
+  selectedTicketPrice: number = this.ticketPrices[0].price;
+  totals: number = 0;
+  cartItems: Item[] = [];
+  active: number = 1; // Default active tab
+
 
   constructor(
     private movieTickets: MoviesService,
+    private cartService: CartService,
     private route: ActivatedRoute,
      private router: Router,
   ) {
@@ -36,6 +52,51 @@ export class TicketsComponent implements OnInit {
     } else {
       console.error(`Invalid movie ID.`);
     }
+    //clear ticket cart every time a new movie is displayed
+    this.cartService.clearCart();
+  }
+
+  addToCart(): void {
+    // Get price based on the selected ticket type
+    const totalPrice = this.selectedTicketPrice * this.ticketQuantity;
+    const totals = this.calculateTotal()
+      // Add selected item to cart
+      this.cartItems.push({
+        title: this.movie?.title,
+        screeningTime: this.selectedScreeningTime,
+        ticketType: this.ticketType,
+        quantity: this.ticketQuantity,
+        ticketPrice: totalPrice
+      });
+
+      //save to localstorage
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
+      console.log(localStorage.getItem('cartItems'))
+  }
+
+
+  calculatePrice(): void {
+    const selectedTicket = this.ticketPrices.find(ticket => ticket.type === this.ticketType);
+    this.selectedTicketPrice = selectedTicket ? selectedTicket.price : 0;
+  }
+
+  calculateTotal(): number {
+    return this.cartItems.reduce((total, item) => total + item.ticketPrice!, 0);
+  }
+
+  goToTicketsTab(): void {
+    // Activate the Tickets tab programmatically
+    this.active = 2
+  }
+
+  confirmPurchase(): void {
+   
+      
+  }
+
+   // Function to toggle active tab
+   toggleTab(tab: number): void {
+    this.active = tab;
   }
 }
 

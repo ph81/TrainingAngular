@@ -16,3 +16,12 @@ export type Movie = {
   poster: string;
   showings: string[];
  };
+
+ export interface Item  {
+  title?: string;
+  screeningTime?: string;
+  ticketType?: string;
+  quantity?: number;
+  ticketPrice?: number;
+  snackPrice?: number;
+ }

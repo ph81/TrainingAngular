@@ -1,0 +1,7 @@
+<ul class="list-unstyled">
+  <li>cart</li>
+  <li *ngFor="let item of cartItems" class="sidebar-text">{{ item.title }} - {{item.quantity}} tickets - {{item.ticketPrice}}</li>
+  <li>
+    <button (click)="clearCartItems()">Empty cart</button>
+  </li>
+</ul>
