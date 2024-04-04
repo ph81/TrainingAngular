@@ -8,30 +8,13 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./movies.component.css']
 })
 export class MoviesComponent implements OnInit {
-  movieNow = 0;
   movies: MoviesService['movies'] = [];
-  constructor(private service: MoviesService, private router: Router) {
+  constructor(public service: MoviesService, public router: Router) {
     this.movies = service.getMovies();
 }
 
 ngOnInit(): void {}
 
-next() {
-  this.movieNow =
-    this.movieNow >= this.movies.length - 1
-      ? 0
-      : ++this.movieNow;
-}
-prev() {
-  this.movieNow =
-    this.movieNow <= 0
-      ? this.movies.length - 1
-      : --this.movieNow;
-}
-
-newIndex(movie: number) {
-  this.movieNow = movie;
-}
 
 selectMovie(id: number) {
   this.router.navigateByUrl(`/tickets?id=${id}`);

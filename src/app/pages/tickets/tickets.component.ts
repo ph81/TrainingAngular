@@ -68,6 +68,7 @@ export class TicketsComponent implements OnInit {
         quantity: this.ticketQuantity,
         ticketPrice: totalPrice
       });
+      this.cartService.updateCartItems(this.cartItems);
 
       //save to localstorage
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
@@ -90,7 +91,7 @@ export class TicketsComponent implements OnInit {
   }
 
   confirmPurchase(): void {
-   
+    console.log(this.cartItems)
       
   }
 

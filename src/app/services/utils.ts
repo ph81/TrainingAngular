@@ -18,10 +18,20 @@ export type Movie = {
  };
 
  export interface Item  {
+  id?: number;
   title?: string;
   screeningTime?: string;
   ticketType?: string;
   quantity?: number;
   ticketPrice?: number;
-  snackPrice?: number;
+  foodPrice?: number;
+ }
+
+ export type Food =  {
+  id: number;
+  image: string;
+  title: string;
+  isBucket?: boolean;
+  foodType?: string;
+  price?: number;
  }

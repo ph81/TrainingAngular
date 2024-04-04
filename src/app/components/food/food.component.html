@@ -1,0 +1,10 @@
+
+
+<h2>Food Items</h2>
+
+<ul>
+  <li *ngFor="let food of foods">
+    {{ food.title }} - ${{ food.price }}
+    <button (click)="addToCart(food)">Add to Cart</button>
+  </li>
+</ul>

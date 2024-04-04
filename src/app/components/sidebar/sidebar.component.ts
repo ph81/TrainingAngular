@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { Item } from 'src/app/services/utils';
+import { SubtotalPipe } from 'src/app/subtotal.pipe';
 
 @Component({
   selector: 'app-sidebar',
