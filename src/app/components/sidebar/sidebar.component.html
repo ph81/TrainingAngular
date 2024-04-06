@@ -2,10 +2,13 @@
   <h2>Shopping Cart</h2>
   <ul>
     <li *ngFor="let item of cartItems">
-      {{ item.title }} - ${{ item.ticketPrice }}
+      {{ item.title }} - ${{ item.price }}
+      <p> <button class="btn btn-primary" (click)="removeCartItems(item)">X</button></p>
     </li>
   </ul>
 
   <p *ngIf="cartItems.length > 0">
     Subtotal: ${{ cartItems | subtotal }}
   </p>
+
+  <button class="btn btn-primary" (click)="clearCartItems()">Empty cart</button>

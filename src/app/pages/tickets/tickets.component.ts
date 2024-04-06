@@ -62,11 +62,13 @@ export class TicketsComponent implements OnInit {
     const totals = this.calculateTotal()
       // Add selected item to cart
       this.cartItems.push({
+        id: this.movie?.id,
         title: this.movie?.title,
         screeningTime: this.selectedScreeningTime,
         ticketType: this.ticketType,
         quantity: this.ticketQuantity,
-        ticketPrice: totalPrice
+        price: totalPrice,
+        type: 'M'
       });
       this.cartService.updateCartItems(this.cartItems);
 

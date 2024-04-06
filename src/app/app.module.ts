@@ -14,7 +14,8 @@ import { MoviesComponent } from './pages/movies/movies.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SnacksComponent } from './pages/snacks/snacks.component';
-import { SubtotalPipe } from './subtotal.pipe';
+import { SubtotalPipe } from './pipes/subtotal.pipe';
+
 
 
 @NgModule({
@@ -26,7 +27,7 @@ import { SubtotalPipe } from './subtotal.pipe';
         HomeComponent,
         MoviesComponent,
         ErrorComponent,
-        SnacksComponent, NavbarComponent, SidebarComponent, SubtotalPipe
+      NavbarComponent, SidebarComponent, SubtotalPipe
     ],
     providers: [],
     bootstrap: [AppComponent],

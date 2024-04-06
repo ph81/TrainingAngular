@@ -25,6 +25,8 @@ export type Movie = {
   quantity?: number;
   ticketPrice?: number;
   foodPrice?: number;
+  type?: string;
+  price?: number;
  }
 
  export type Food =  {
@@ -34,4 +36,5 @@ export type Movie = {
   isBucket?: boolean;
   foodType?: string;
   price?: number;
+  quantity: number;
  }

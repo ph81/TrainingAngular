@@ -50,7 +50,7 @@
         <!-- Ticket Quantity Input -->
         <p> 
           <label for="ticketQuantity">Quantity:</label>
-          <input id="ticketQuantity" type="number" [(ngModel)]="ticketQuantity" min="1" required>
+          <input id="ticketQuantity" type="number" [(ngModel)]="ticketQuantity" min="1" max="10" required>
         </p>
         <p> 
           <button (click)="addToCart()">Add to Cart</button>

@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
 import { Item } from 'src/app/services/utils';
-import { SubtotalPipe } from 'src/app/subtotal.pipe';
+
 
 @Component({
   selector: 'app-sidebar',
@@ -26,11 +26,17 @@ export class SidebarComponent implements OnInit, OnDestroy {
 
   loadCartItems(): void {
     this.cartItems = this.cartService.getCartItems();
+    console.log(this.cartItems)
   }
 
   clearCartItems(): void {
     this.cartService.clearCart();
-    this.loadCartItems(); // Update cartItems after clearing the cart
+    //this.loadCartItems(); // Update cartItems after clearing the cart
+  }
+
+  removeCartItems(item: Item): void {
+    this.cartService.removeItem(item)
+    this.loadCartItems();
   }
 
   subscribeToLocalStorageChanges(): void {

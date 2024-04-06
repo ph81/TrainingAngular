@@ -21,8 +21,17 @@ export class CartService {
     this.cartItemsChanged.next();
   }
 
+  removeItem(itemToRemove: Item): void {
+    let cartItems: Item[] = this.getCartItems();
+    const updatedCartItems = cartItems.filter(item => item.id !== itemToRemove.id);
+    this.updateCartItems(updatedCartItems);
+  }
+
   clearCart(): void {
+    console.log(localStorage.getItem('cartItems'))
     localStorage.removeItem('cartItems');
+    localStorage.setItem('cartItems', JSON.stringify([])); // Force clearing
+    console.log(localStorage.getItem('cartItems'))
     this.cartItemsChanged.next();
   }
 }
