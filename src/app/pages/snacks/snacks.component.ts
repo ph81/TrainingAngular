@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FoodByTypePipe } from 'src/app/pipes/food-by-type.pipe';
 import { CartService } from 'src/app/services/cart.service';
+import { CurrencyService } from 'src/app/services/currency.service';
 import { FoodService } from 'src/app/services/food.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { Food, Item } from 'src/app/services/utils';
 
 @Component({
@@ -20,14 +22,23 @@ export class SnacksComponent implements OnInit {
   totals: number = 0;
   cartItems: Item[] = [];
 
-  constructor(private cartService: CartService, private foodService: FoodService) {
+  constructor(
+    private cartService: CartService, 
+    private foodService: FoodService, 
+    private toastService: ToastService, 
+    private currencyService: CurrencyService) {
     
   }
 
   ngOnInit(): void {
     this.loadCartItems();
     this.foods = this.foodService.getFoods() || [];
-    //this.cartService.clearCart();
+    // Subscribe to currency changes
+    this.currencyService.selectedCurrency.subscribe(currency => {
+      this.updatePrices(currency);
+    });
+    // Update prices initially based on the selected currency
+    this.updatePrices(this.currencyService.currencyByCountry);
   }
 
   loadCartItems(): void {
@@ -41,6 +52,7 @@ export class SnacksComponent implements OnInit {
       this.cartItems.splice(indexToRemove, 1);
       this.cartService.updateCartItems(this.cartItems);
       this.calculateTotalCost();
+      this.toastService.setMessage('Item removed');
     }
   }
 
@@ -71,10 +83,31 @@ export class SnacksComponent implements OnInit {
   }
     this.cartService.updateCartItems(this.cartItems);
     this.calculateTotalCost();
+    this.toastService.setMessage('Item added to cart');
   }
 
   calculateTotalCost(): void {
     this.totals = this.cartItems.reduce((total, item) => total + item.foodPrice!, 0);
+  }
+
+  private updatePrices(currency: string): void {
+    if (currency === 'MXN' || currency === 'USD' || currency === 'EUR') {
+      // Iterate through food items 
+      this.foods?.forEach(food => {
+        if (food.originalPrice === undefined) {
+          food.originalPrice = food.price; // Set the original price if not already set
+        }
+        const convertedPrice = this.currencyService.getCorrectValue(food.originalPrice!, currency);
+        food.price = convertedPrice;
+      });
+  
+      // Similar logic with creating a copy for cart items
+  
+      // Recalculate the total cost
+      this.calculateTotalCost();
+    } else {
+      console.error('Invalid currency code:', currency);
+    }
   }
 
 

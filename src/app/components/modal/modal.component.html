@@ -1,0 +1,7 @@
+<div *ngFor="let item of cartItems">
+  <p>{{ item.title }} - {{ item.screeningTime }} - {{ item.ticketType | titlecase }} x{{ item.quantity }} - ${{ item.ticketPrice?.toFixed(2) }}</p>
+</div>
+<p *ngIf="cartItems.length > 0">
+  Subtotal: ${{ cartItems! | subtotal | number:'1.2-2' }}
+</p>
+

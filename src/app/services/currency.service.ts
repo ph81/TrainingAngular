@@ -1,23 +1,30 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrencyService {
-  currencyByCountry: 'MEX' | 'USA' | 'ES' = 'MEX';
+  currencyByCountry: 'MXN' | 'USD' | 'EUR' = 'USD';
   rates = {
-    MEX: 1,
-    USA: 0.060,
-    ES: 0.055,
+    MXN: 16.45,
+    USD: 1,
+    EUR: 0.92,
   };
+
+  private selectedCurrencySubject = new BehaviorSubject<string>('USD'); // Initialize with default
+  selectedCurrency = this.selectedCurrencySubject.asObservable();
 
   constructor() {}
 
-  changeCurrencyTypeTo(currencyByCountry: 'MEX' | 'USA' | 'ES') {
+  changeCurrencyTypeTo(currencyByCountry: 'MXN' | 'USD' | 'EUR') {
+    console.log(`Currency updated to ${currencyByCountry}`);
     this.currencyByCountry = currencyByCountry;
+    this.selectedCurrencySubject.next(currencyByCountry); // Emit new currency
   }
+  
 
-  getCorrectValue(value: number) {
-    return value * this.rates[this.currencyByCountry];
+  getCorrectValue(value: number, currency: 'MXN' | 'USD' | 'EUR') {
+    return value * this.rates[currency];
   }
 }

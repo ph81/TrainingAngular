@@ -36,5 +36,6 @@ export type Movie = {
   isBucket?: boolean;
   foodType?: string;
   price?: number;
+  originalPrice?: number;
   quantity: number;
  }

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { Item } from '../services/utils';
 
 @Pipe({
-  name: 'subtotal'
+  name: 'subtotal',
+  pure: false
 })
 export class SubtotalPipe implements PipeTransform {
 
@@ -11,8 +12,7 @@ export class SubtotalPipe implements PipeTransform {
       return 0;
     }
     return cartItems.reduce((acc, item) => {
-      const price = item.price || 0; // Use ticketPrice or default to 0
-      // const foodPrice = item.foodPrice || 0;   // Use foodPrice or default to 0
+      const price = item.price || 0; 
       return acc + price;
     }, 0);
   }

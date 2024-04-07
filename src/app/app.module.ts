@@ -9,12 +9,12 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeroComponent } from './components/layout/hero/hero.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
-import { FoodComponent } from './components/food/food.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { ErrorComponent } from './pages/error/error.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { SnacksComponent } from './pages/snacks/snacks.component';
-import { SubtotalPipe } from './pipes/subtotal.pipe';
+import { ToastComponent } from './components/toast/toast.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { SharedModule } from './shared/shared/shared.module';
 
 
 
@@ -27,14 +27,14 @@ import { SubtotalPipe } from './pipes/subtotal.pipe';
         HomeComponent,
         MoviesComponent,
         ErrorComponent,
-      NavbarComponent, SidebarComponent, SubtotalPipe
+      NavbarComponent, SidebarComponent, ToastComponent, ModalComponent
     ],
     providers: [],
     bootstrap: [AppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,
-        AppRoutingModule, NgbModule
+        AppRoutingModule, NgbModule, SharedModule
     ]
 })
 export class AppModule { }

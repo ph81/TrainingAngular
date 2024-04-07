@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit, } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { CartService } from 'src/app/services/cart.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { Item } from 'src/app/services/utils';
 
 
@@ -13,7 +14,7 @@ export class SidebarComponent implements OnInit, OnDestroy {
   cartItems: Item[] = [];
   private localStorageSubscription: Subscription = new Subscription();
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private toastService: ToastService) { }
 
   ngOnInit(): void {
     this.loadCartItems();
@@ -35,7 +36,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   }
 
   removeCartItems(item: Item): void {
-    this.cartService.removeItem(item)
+    this.cartService.removeItem(item);
+    this.toastService.setMessage('Item removed');
     this.loadCartItems();
   }
 
