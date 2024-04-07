@@ -10,7 +10,7 @@ import { MoviesService } from 'src/app/services/movies.service';
 import { ToastService } from 'src/app/services/toast.service';
 import { Item, Movie } from 'src/app/services/utils';
 import { ModalComponent } from 'src/app/components/modal/modal.component';
-import { SharedModule } from 'src/app/shared/shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-tickets',
