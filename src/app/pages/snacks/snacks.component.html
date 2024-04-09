@@ -2,7 +2,7 @@
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <div class="col" *ngFor="let food of foods" >
       <div class="card border-primary mb-3" style="width: 18rem;">
-        <img src={{food.image}} class="card-img-top" alt={{food.title}}>
+        <img src={{food.image}} class="card-img-top img-wrap" alt={{food.title}}>
         <div class="card-body">
           <h5 class="card-title">{{food.title}}</h5>
           <p>Price: ${{ food.price }}</p>

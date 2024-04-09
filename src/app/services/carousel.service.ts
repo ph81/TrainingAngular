@@ -11,7 +11,7 @@ export class CarouselService {
     {
       id: 1,
       title: 'Dune Part 2',
-      image: 'assets/carousel/dunepart2.jpg',
+      image: 'assets/carousel/dune2.jpg',
       url: ''
     },
     {
@@ -29,7 +29,7 @@ export class CarouselService {
     {
       id: 4,
       title: 'Kung Fu Panda 4',
-      image: 'assets/carousel/kungfupanda.png',
+      image: 'assets/carousel/kungfupanda.jpg',
       url: ''
     }
   ];

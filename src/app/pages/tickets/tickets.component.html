@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container-fluid mt-5">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="1">
       <button ngbNavLink>Movie Details</button>
@@ -15,14 +15,14 @@
             </div>
             <div class="col-md-8">
               <div class="card-body">
-                <h5 class="card-title">{{movie?.title}}</h5>
+                <h4 class="card-title">{{movie?.title}}</h4>
                 <p class="card-text"><strong> Runtime:</strong>{{movie?.runtime}}</p>
                 <p class="card-text"><strong> Genre:</strong>{{movie?.genre}}</p>
                 <p class="card-text"><strong> Year:</strong>{{movie?.year}}</p>
                 <p class="card-text">{{movie?.plot}}</p>
                 <p class="card-text"><strong> Director:</strong>{{movie?.director}}</p>
                 <p class="card-text"><strong> Cast:</strong>{{movie?.actors}}</p>
-                <p class="card-text"><strong> Screening times:</strong><span class="badge text-bg-primary" *ngFor="let time of movie?.showings">{{time}}</span></p>
+                <p class="card-text"><strong> Screening times:</strong><span class="badge bg-secondary mx-2" *ngFor="let time of movie?.showings">{{time}}</span></p>
                 <button class="btn btn-primary" (click)="goToTicketsTab()">Buy Tickets</button>
               </div>
             </div>
@@ -33,7 +33,7 @@
     </li>
     <li [ngbNavItem]="2">
       <button ngbNavLink>Choose you Tickets</button>
-      <ng-template ngbNavContent>
+      <ng-template ngbNavContent class="mx-auto">
       <!-- Display Ticket Types and Quantity -->
       <p> <label for="screeningTime">Screenings:</label>
         <select id="screeningTime" [(ngModel)]="selectedScreeningTime">
@@ -63,7 +63,7 @@
         <!-- Display Cart Items -->
         <div class="col-md-8">
           <div class="card-body mx-auto">
-            <p class="card-text">{{ cartItems[0].title }} - {{ cartItems[0].screeningTime }} </p>
+            <p class="card-text">{{ cartItems[0].title! }} - {{ cartItems[0].screeningTime! }} </p>
             <p class="card-text" *ngFor="let item of cartItems">
                {{ item.ticketType | titlecase }} x{{ item.quantity }} - ${{ item.price?.toFixed(2) }}
             </p>

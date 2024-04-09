@@ -1,8 +1,10 @@
 <header>
   <app-navbar></app-navbar>
 </header>
-<main class="flex-shrink-0">
-  <router-outlet></router-outlet>
-  <app-toast></app-toast>
-</main>
+<div class="container-fluid">
+  <main>
+    <router-outlet></router-outlet>
+    <app-toast></app-toast>
+  </main>
+</div>
 <app-footer></app-footer>

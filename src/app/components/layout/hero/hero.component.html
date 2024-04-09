@@ -1,12 +1,13 @@
-<ngb-carousel>
-  <ng-template ngbSlide *ngFor="let movie of carousel; index as index">
-
-    <div class="picsum-img-wrapper">
-      <img [src]="movie.image" alt={{movie.title}} />
-    </div>
-    <div class="carousel-caption">
-      <h3>{{movie.title}}</h3>
-      <button class="btn btn-primary" (click)="selectMovie(movie.id)">Buy tickets</button>
-    </div>
-  </ng-template>
-</ngb-carousel>
+<div class="carousel-container">
+  <ngb-carousel>
+    <ng-template ngbSlide *ngFor="let movie of carousel; index as index">
+      <div class="picsum-img-wrapper">
+        <img [src]="movie.image" alt={{movie.title}} />
+      </div>
+      <div class="carousel-caption mx-auto">
+        <h2>{{movie.title}}</h2>
+        <button class="btn btn-primary mt-4 mb-4" (click)="selectMovie(movie.id)">Buy tickets</button>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>

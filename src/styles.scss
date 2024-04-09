@@ -1,2 +1,8 @@
 @import "assets/theme/variables";
 @import "assets/theme/vapor.css";
+
+body {
+  display: flex;
+  min-height: 100vh; /* Ensures viewport height */
+  flex-direction: column; /* Stacks content vertically */
+}
