@@ -27,6 +27,7 @@ export type Movie = {
   foodPrice?: number;
   type?: string;
   price?: number;
+  image?: string;
  }
 
  export type Food =  {

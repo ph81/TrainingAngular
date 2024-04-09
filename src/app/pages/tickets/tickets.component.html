@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container mt-5">
   <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
     <li [ngbNavItem]="1">
       <button ngbNavLink>Movie Details</button>
       <ng-template ngbNavContent>
         <!-- Display Movie Details -->
-        <div class="card">
+        <div class="card border-0">
           <div class="row g-0">
             <div class="col-md-4">
               <img
@@ -32,10 +32,10 @@
       </ng-template>
     </li>
     <li [ngbNavItem]="2">
-      <button ngbNavLink>Tickets</button>
+      <button ngbNavLink>Choose you Tickets</button>
       <ng-template ngbNavContent>
       <!-- Display Ticket Types and Quantity -->
-      <p> <label for="screeningTime">Screening Time:</label>
+      <p> <label for="screeningTime">Screenings:</label>
         <select id="screeningTime" [(ngModel)]="selectedScreeningTime">
           <option *ngFor="let time of movie?.showings" [value]="time">{{ time }}</option>
         </select></p>
@@ -53,22 +53,27 @@
           <input id="ticketQuantity" type="number" [(ngModel)]="ticketQuantity" min="1" max="10" required>
         </p>
         <p> 
-          <button (click)="addToCart()">Add to Cart</button>
+          <button (click)="addToCart()" class="btn btn-primary">Add to Cart</button>
         </p>
       </ng-template>
     </li>
     <li [ngbNavItem]="3">
-      <button ngbNavLink>Three</button>
+      <button ngbNavLink>Get Ready for your movie</button>
       <ng-template ngbNavContent>
         <!-- Display Cart Items -->
-      <div *ngFor="let item of cartItems">
-        <p>{{ item.title }} - {{ item.screeningTime }} - {{ item.ticketType | titlecase }} x{{ item.quantity }} - ${{ item.price?.toFixed(2) }}</p>
-      </div>
-      <p *ngIf="cartItems.length > 0">
-        Subtotal: ${{ cartItems | subtotal | number:'1.2-2' }}
-      </p>
+        <div class="col-md-8">
+          <div class="card-body mx-auto">
+            <p class="card-text">{{ cartItems[0].title }} - {{ cartItems[0].screeningTime }} </p>
+            <p class="card-text" *ngFor="let item of cartItems">
+               {{ item.ticketType | titlecase }} x{{ item.quantity }} - ${{ item.price?.toFixed(2) }}
+            </p>
+            <p *ngIf="cartItems.length > 0" class="card-text">
+              <strong>Subtotal:</strong> ${{ cartItems! | subtotal | number:'1.2-2' }}
+            </p>
+          </div>
+        </div>
       <p> 
-        <button (click)="confirmPurchase()">Confirm purchase</button>
+        <button (click)="confirmPurchase()" class="btn btn-primary">Confirm purchase</button>
       </p>
       </ng-template>
     </li>

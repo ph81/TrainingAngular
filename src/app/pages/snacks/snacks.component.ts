@@ -77,7 +77,8 @@ export class SnacksComponent implements OnInit {
       title: food.title,
       price: itemPrice,
       quantity: food.quantity,
-      type: 'F'
+      type: 'F',
+      image: food.image
     };
     this.cartItems.push(newItem);
   }

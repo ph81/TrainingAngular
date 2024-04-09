@@ -23,7 +23,6 @@ import { SharedModule } from './shared/shared.module';
         AppComponent,
         FooterComponent,
         HeroComponent,
-        ContactComponent,
         HomeComponent,
         MoviesComponent,
         ErrorComponent,

@@ -96,7 +96,8 @@ export class TicketsComponent implements OnInit {
         ticketType: this.ticketType,
         quantity: this.ticketQuantity,
         price: totalPrice,
-        type: 'M'
+        type: 'M',
+        image: this.movie?.poster
       });
       this.cartService.updateCartItems(this.cartItems);
 

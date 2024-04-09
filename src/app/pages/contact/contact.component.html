@@ -1,1 +1,38 @@
-<p>contact works!</p>
+<div class="container d-flex mt-5">
+  <form (ngSubmit)="onSubmit()" style="width: 45rem;" class="mx-auto">
+    <fieldset>
+      <legend>Contact</legend>
+      <p>For any questions or suggestions please fill the form below:</p>
+      <div>
+        <label for="inputName" class="form-label mt-4">Name</label>
+        <input type="text" class="form-control" id="inputName" aria-describedby="nameHelp" placeholder="Enter name" 
+        [ngModel]="formData.name | titlecase"
+        (ngModelChange)="formData.name = $event"
+        [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <label for="inputEmail" class="form-label mt-4">Email address</label>
+        <input type="text" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email" 
+        [(ngModel)]="formData.email" 
+        (ngModelChange)="formData.email = $event"
+        [ngModelOptions]="{standalone: true}">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div>
+        <label for="inputSubject" class="form-label mt-4">Subject</label>
+        <input type="text" class="form-control" id="inputSubject" aria-describedby="subjectHelp" placeholder="Enter subject" 
+        [ngModel]="formData.subject | uppercase"
+        (ngModelChange)="formData.subject = $event"
+        [ngModelOptions]="{standalone: true}">
+      </div>
+      <div>
+        <label for="inputMessage" class="form-label mt-4">Message</label>
+        <textarea class="form-control" rows="3" id="inputMessage" aria-describedby="messageHelp" placeholder="Enter message" 
+        [(ngModel)]="formData.message"
+        (ngModelChange)="formData.message = $event"
+        [ngModelOptions]="{standalone: true}"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary my-4">Submit</button>
+    </fieldset>
+  </form>
+</div>
