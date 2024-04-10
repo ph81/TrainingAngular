@@ -15,10 +15,10 @@
 
 .carousel-caption {
   width: 20rem;
-  background: #2c1a4d;
+  background: var(--bs-body-bg);
 }
 
 .carousel-control-next,
-.carousel-control-prev /*, .carousel-indicators */ {
+.carousel-control-prev /* .carousel-indicators */ {
     filter: invert(100%);
 }

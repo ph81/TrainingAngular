@@ -15,7 +15,7 @@ export class CarouselService {
       url: ''
     },
     {
-      id: 2,
+      id: 22,
       title: 'Godzilla Minus One',
       image: 'assets/carousel/godzilla-minus-one.jpg',
       url: ''
@@ -27,9 +27,15 @@ export class CarouselService {
       url: ''
     },
     {
-      id: 4,
+      id: 9,
       title: 'Kung Fu Panda 4',
       image: 'assets/carousel/kungfupanda.jpg',
+      url: ''
+    },
+    {
+      id: 8,
+      title: 'Poor Things',
+      image: 'assets/carousel/poorthings.jpg',
       url: ''
     }
   ];

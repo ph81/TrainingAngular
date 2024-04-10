@@ -1,10 +1,10 @@
-<div class="container mx-auto">
-	<div class="modal-header">
+<div class="container">
+	<div class="modal-header mt-2">
 		<h4 class="modal-title" id="modal-basic-title">Your tickets</h4>
 		<button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
 	</div>
-	<div class="modal-body mx-auto">
-		<div class="card">
+	<div class="modal-body mx-auto mb-4">
+		<div class="card my-4 border-0">
       <div class="row g-0">
         <div class="col-md-4">
           <img
@@ -20,14 +20,14 @@
              {{ item.ticketType | titlecase }} x{{ item.quantity }} - ${{ item.price?.toFixed(2) }}
           </p>
           <p *ngIf="cartItems.length > 0" class="card-text">
-            <strong>Subtotal:</strong> ${{ cartItems! | subtotal | number:'1.2-2' }}
+            <strong>Total:</strong> ${{ cartItems! | subtotal | number:'1.2-2' }}
           </p>
         </div>
       </div>
     </div>
     <h6>Scan this QR code at your movie theater</h6>
-    <p><img  src='../../../assets/qrcode.png'
-      class="img-fluid rounded-start mx-auto d-block"
-      alt={{cartItems[0].title}}}  /></p>
+    <p>
+      <img  src='../../../assets/qrcode.png' class="img-fluid rounded-start mx-auto d-block" alt='QR Code'  />
+    </p>
 	</div>
 </div>

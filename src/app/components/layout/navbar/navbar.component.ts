@@ -1,8 +1,5 @@
-import { ChangeDetectorRef, Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { CurrencyService } from 'src/app/services/currency.service';
-import { SidebarComponent } from '../../sidebar/sidebar.component';
-import { Item } from 'src/app/services/utils';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 
 @Component({
