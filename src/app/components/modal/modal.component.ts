@@ -18,8 +18,6 @@ export class ModalComponent {
   }
 
   confirmPurchase() {
-    // Implement your purchase confirmation logic here
-    // For now, let's just close the modal
     this.activeModal.close('Confirmed');
   }
 }

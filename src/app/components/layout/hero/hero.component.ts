@@ -13,26 +13,26 @@ export class HeroComponent implements OnInit  {
     this.carousel = service.getCarousel();
   }
 
-ngOnInit(): void {}
+  ngOnInit(): void {}
 
-next() {
-  this.movieNow =
-    this.movieNow >= this.carousel.length - 1
-      ? 0
-      : ++this.movieNow;
-}
-prev() {
-  this.movieNow =
-    this.movieNow <= 0
-      ? this.carousel.length - 1
-      : --this.movieNow;
-}
+  next() {
+    this.movieNow =
+      this.movieNow >= this.carousel.length - 1
+        ? 0
+        : ++this.movieNow;
+  }
+  prev() {
+    this.movieNow =
+      this.movieNow <= 0
+        ? this.carousel.length - 1
+        : --this.movieNow;
+  }
 
-newIndex(movie: number) {
-  this.movieNow = movie;
-}
+  newIndex(movie: number) {
+    this.movieNow = movie;
+  }
 
-selectMovie(index: number) {
-  this.router.navigateByUrl(`/tickets?id=${index}`);
-}
+  selectMovie(index: number) {
+    this.router.navigateByUrl(`/tickets?id=${index}`);
+  }
 }

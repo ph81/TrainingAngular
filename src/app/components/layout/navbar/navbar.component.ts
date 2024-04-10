@@ -21,7 +21,6 @@ export class NavbarComponent implements OnInit {
 
 
   ngOnInit(): void {
-     // Subscribe to currency changes
      this.currencySubscription = this.currencyService.selectedCurrency.subscribe(
       currency => {
         this.selectedCurrency = currency;
@@ -59,9 +58,5 @@ export class NavbarComponent implements OnInit {
     this.currencySubscription?.unsubscribe();
   }
 
-
-
-
-  
 
 }

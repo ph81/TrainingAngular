@@ -9,16 +9,17 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class MoviesComponent implements OnInit {
   movies: MoviesService['movies'] = [];
+
   constructor(public service: MoviesService, public router: Router) {
     this.movies = service.getMovies();
-}
+  }
 
-ngOnInit(): void {}
+  ngOnInit(): void {}
 
 
-selectMovie(id: number) {
-  this.router.navigateByUrl(`/tickets?id=${id}`);
-}
+  selectMovie(id: number) {
+    this.router.navigateByUrl(`/tickets?id=${id}`);
+  }
 }
 
 

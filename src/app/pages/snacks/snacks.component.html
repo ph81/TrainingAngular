@@ -5,13 +5,13 @@
         <img src={{food.image}} class="card-img-top img-wrap" alt={{food.title}}>
         <div class="card-body">
           <h5 class="card-title">{{food.title}}</h5>
-          <p>Price: ${{ food.price }}</p>
+          <p>Price: ${{ food.price?.toFixed(2) }}</p>
           <p> 
             <label for="foodQuantity">Quantity:</label>
             <input id="foodQuantity" type="number" [defaultValue]="1" min="1" max="10" required [(ngModel)]="food.quantity">
           </p>
           <button class="btn btn-primary" (click)="addItemToCart(food)">Add to order</button>
-      </div>
+        </div>
       </div>
     </div>
   </div>

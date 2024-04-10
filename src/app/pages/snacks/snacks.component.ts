@@ -93,7 +93,6 @@ export class SnacksComponent implements OnInit {
 
   private updatePrices(currency: string): void {
     if (currency === 'MXN' || currency === 'USD' || currency === 'EUR') {
-      // Iterate through food items 
       this.foods?.forEach(food => {
         if (food.originalPrice === undefined) {
           food.originalPrice = food.price; // Set the original price if not already set
@@ -101,10 +100,7 @@ export class SnacksComponent implements OnInit {
         const convertedPrice = this.currencyService.getCorrectValue(food.originalPrice!, currency);
         food.price = convertedPrice;
       });
-  
-      // Similar logic with creating a copy for cart items
-  
-      // Recalculate the total cost
+
       this.calculateTotalCost();
     } else {
       console.error('Invalid currency code:', currency);

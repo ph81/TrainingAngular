@@ -47,7 +47,7 @@ export class TicketsComponent implements OnInit {
 
   ngOnInit(): void {
     const movieId = +this.movieTickets.route.snapshot.queryParamMap.get('id')!;
-    if (!isNaN(movieId)) { // Check if movieId is not NaN
+    if (!isNaN(movieId)) { 
       const movie = this.movieTickets.getMovieById(movieId);
       if (movie) { // Check if movie exists
         this.movie = movie;
@@ -62,16 +62,13 @@ export class TicketsComponent implements OnInit {
         this.updatePrices(currency);
       });
   
-      // Update prices initially based on the selected currency
       this.updatePrices(this.currencyService.currencyByCountry);
     //clear ticket cart every time a new movie is displayed
     this.cartService.clearCart();
   }
 
   private updatePrices(currency: string): void {
-    // Ensure that the currency is one of the valid options
     if (currency === 'MXN' || currency === 'USD' || currency === 'EUR') {
-      // Iterate through ticket prices and update them to reflect the selected currency
       this.ticketPrices.forEach(ticket => {
         ticket.price = this.currencyService.getCorrectValue(ticket.price, currency);
       });
@@ -101,7 +98,6 @@ export class TicketsComponent implements OnInit {
       });
       this.cartService.updateCartItems(this.cartItems);
 
-      //save to localstorage
       localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
       console.log(localStorage.getItem('cartItems'))
       this.toastService.setMessage('Movie tickets added to cart');
@@ -109,9 +105,7 @@ export class TicketsComponent implements OnInit {
 
 
   calculatePrice(): void {
-    // Find the selected ticket type
     const selectedTicket = this.ticketPrices.find(ticket => ticket.type === this.ticketType);
-    // Update the selected ticket price based on the selected ticket type
     if (selectedTicket) {
       this.selectedTicketPrice = parseFloat(selectedTicket.price.toFixed(2)); 
     } else {
@@ -124,19 +118,17 @@ export class TicketsComponent implements OnInit {
   }
 
   goToTicketsTab(): void {
-    // Activate the Tickets tab programmatically
+    // Activate the Tickets tab
     this.active = 2
   }
 
   confirmPurchase(): void {
     const modalRef = this.modalService.open(ModalComponent);
     modalRef.componentInstance.title = 'Purchase Summary';
-    modalRef.componentInstance.cartItems = this.cartItems; // Pass cartItems to the modal
-    modalRef.componentInstance.totals = this.totals; // Pass totals to the modal
+    modalRef.componentInstance.cartItems = this.cartItems; 
+    modalRef.componentInstance.totals = this.totals; 
   }
       
-
-   // Function to toggle active tab
    toggleTab(tab: number): void {
     this.active = tab;
   }

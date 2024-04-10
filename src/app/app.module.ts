@@ -7,7 +7,6 @@ import { NavbarComponent } from './components/layout/navbar/navbar.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { HeroComponent } from './components/layout/hero/hero.component';
-import { ContactComponent } from './pages/contact/contact.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MoviesComponent } from './pages/movies/movies.component';
 import { ErrorComponent } from './pages/error/error.component';
